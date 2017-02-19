@@ -238,15 +238,15 @@ exec_always "setxkbmap -option ctrl:swapcaps"
 exec firefox
 exec pithos
 exec i3-msg 'workspace $ws_term; exec terminator'
-# exec emacs25
+exec emacs25
 # exec thunar
-exec calibre
 exec compton -fb
 # exec messengerfordesktop
+exec calibre
 
 # exec --no-startup-id i3-msg 'workspace $ws_book; exec qpdfview $BOOK'
 
 exec_always --no-startup-id feh --bg-fill ~/wallpaper.png
-exec xmodmap ~/.swapesc
+exec_always xmodmap ~/.swapesc
 
 # Executes applications in workspace
