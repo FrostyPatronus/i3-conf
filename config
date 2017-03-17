@@ -1,5 +1,4 @@
-set $darkred     #000000
-set_from_resource $red         color9  #000000
+set $txt-red #d8371e
 set_from_resource $darkgreen   color2  #000000
 set_from_resource $green       color10 #000000
 set_from_resource $darkyellow  color3  #000000
@@ -32,7 +31,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu Mono 10
+font pango:Inconsolata 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -219,7 +218,7 @@ bar {
         separator          $transparent
 
 #                          BORDER       BACKGROUND   TEXT
-        focused_workspace  $transparent $transparent $text-color
+        focused_workspace  $transparent $transparent $txt-red
         inactive_workspace $transparent $transparent $text-color
         active_workspace   $transparent $transparent $text-color
         urgent_workspace   $darkred     $darkred     $transparent
@@ -275,18 +274,20 @@ exec calibre
 exec compton -fb
 # exec messengerfordesktop
 
-# exec --no-startup-id i3-msg 'workspace $ws_book; exec qpdfview $BOOK'
-
+bindsym $mod+Control+e exec "earthprn.py"
 exec_always --no-startup-id feh --bg-fill ~/wallpaper.png
 exec_always xmodmap ~/.swapesc
 
 # Gaps
-smart_gaps on
-gaps inner 7
+gaps inner 6
+
+# Opacity
+bindsym $mod+Control+k exec "compton-trans -c -5"
+bindsym $mod+Control+l exec "compton-trans -c +5"
 
 # Modes
 set $mode_power power
-bindsym $mod+Control+l mode "$mode_power"
+bindsym $mod+Control+p mode "$mode_power"
 mode "$mode_power" {
     bindsym l mode "default", exec --no-startup-id $HOME/.i3/i3exit lock
     bindsym e mode "default", exec --no-startup-id $HOME/.i3/i3exit logout
